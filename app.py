@@ -310,7 +310,7 @@ st.markdown(
 | **Konstante Ankunftsrate** | Echte Gates haben Morgenspitzen; die Gleichgewichtsformeln mit dem Tagesmittel unterschätzen die Spitze. | **Wurzel-Personalregel (Halfin-Whitt)**, **zeitvariable Ankünfte** (Folgestücke) |
 | **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **Prioritätsklassen** (Folgestück) |
 | **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **Jackson-Netze** (Folgestück) |
-| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **Simulationsanalyse (Warm-up, Konfidenzintervalle)** (Folgestück) |
+| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **[Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://sebastianhanisch-output-analysis-demo.streamlit.app/)** (Folgestück) |
 """
 )
 st.caption(

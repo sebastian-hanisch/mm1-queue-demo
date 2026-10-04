@@ -98,7 +98,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 | Konstante Ankunftsrate | Wurzel-Personalregel (Halfin-Whitt), zeitvariable Ankünfte |
 | Alle Lkw gleich wichtig | Prioritätsklassen |
 | Ein einziger Halt | Jackson-Netze |
-| Ein fester Simulationslauf ohne Intervalle | Simulationsanalyse (Warm-up, Konfidenzintervalle) |
+| Ein fester Simulationslauf ohne Intervalle | [Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://github.com/sebastian-hanisch/output-analysis-demo) |
 
 Der Baum zeigt dieselben Folgestücke in ihrer Abhängigkeit:
 
