@@ -1,5 +1,7 @@
 # M/M/1 – ein Gate, ein Schalter (Streamlit-Demo)
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-mm1-queue-demo.streamlit.app/)**
+
 Interaktive Demo zur **M/M/1-Schlange**, dem einfachsten Modell der Warteschlangentheorie, am Beispiel eines
 Terminal-Gates mit einer Abfertigungsspur. **Wurzel der Konzepte-Linie „Warteschlangentheorie und Simulation“** im
 Portfolio von [Sebastian Hanisch](https://sebastianhanisch.net) (Operations Research und Machine Learning): ein Verfahren,
