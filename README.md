@@ -96,7 +96,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 | Unbegrenzte Schlange | [M/M/c/c (Erlang B)](https://github.com/sebastian-hanisch/erlang-b-demo), [seltene Ereignisse (Splitting)](https://github.com/sebastian-hanisch/splitting-demo) |
 | Unendliche Geduld | [Erlang A](https://github.com/sebastian-hanisch/erlang-a-demo) |
 | Konstante Ankunftsrate | [Wurzel-Personalregel (Halfin-Whitt)](https://github.com/sebastian-hanisch/square-root-staffing-demo), [zeitvariable Ankünfte](https://github.com/sebastian-hanisch/time-varying-arrivals-demo) |
-| Alle Lkw gleich wichtig | Prioritätsklassen |
+| Alle Lkw gleich wichtig | [Prioritätsklassen](https://github.com/sebastian-hanisch/priority-queue-demo) |
 | Ein einziger Halt | Jackson-Netze |
 | Ein fester Simulationslauf ohne Intervalle | [Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://github.com/sebastian-hanisch/output-analysis-demo) |
 
@@ -123,6 +123,7 @@ Gegenbeispiel mit fester Dauer), zeitabhängige Ankunftsraten, Prioritäten, Net
 
 ## Verwandte Demos im Portfolio
 
+- [`markov-queue-demo`](https://github.com/sebastian-hanisch/markov-queue-demo) (Zusatzstück: Zustandsdiagramm, Generator und die drei Wege zum Gleichgewicht hinter den Formeln).
 - [`ems_demo`](https://github.com/sebastian-hanisch/ems-demo): Fall-Demo zur Standortplanung von Rettungsfahrzeugen
   mit dem **Hypercube Queueing Model** (Larson 1974), einer Markov-Kette über alle 2ᴺ Verfügbarkeitszustände mehrerer
   Server. Ihr Korrektheitstest ist die klassische **Erlang-B-Formel**, dieselbe, die diese Linie in einem Folgestück

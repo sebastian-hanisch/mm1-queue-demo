@@ -308,13 +308,13 @@ st.markdown(
 | **Unbegrenzte Schlange** | Stellplätze sind knapp: wer bei voller Zufahrt ankommt, geht verloren. Die Verlustwahrscheinlichkeit ist oft winzig und damit nur mit Tricks simulierbar. | **[M/M/c/c (Erlang B)](https://sebastianhanisch-erlang-b-demo.streamlit.app/)** und **[seltene Ereignisse (Splitting)](https://sebastianhanisch-splitting-demo.streamlit.app/)** |
 | **Unendliche Geduld** | Niemand dreht um. Mit Abwanderung bleibt auch bei Überlast ein Gleichgewicht. | **[Erlang A](https://sebastianhanisch-erlang-a-demo.streamlit.app/)** |
 | **Konstante Ankunftsrate** | Echte Gates haben Morgenspitzen; die Gleichgewichtsformeln mit dem Tagesmittel unterschätzen die Spitze. | **[Wurzel-Personalregel (Halfin-Whitt)](https://sebastianhanisch-square-root-staffing-demo.streamlit.app/)**, **[zeitvariable Ankünfte](https://sebastianhanisch-time-varying-arrivals-demo.streamlit.app/)** |
-| **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **Prioritätsklassen** (Folgestück) |
+| **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **[Prioritätsklassen](https://sebastianhanisch-priority-queue-demo.streamlit.app/)** |
 | **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **Jackson-Netze** (Folgestück) |
-| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **[Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://sebastianhanisch-output-analysis-demo.streamlit.app/)** (Folgestück) |
+| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **[Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://sebastianhanisch-output-analysis-demo.streamlit.app/)** |
 """
 )
 st.caption(
-    "Verwandt im Portfolio: die Rettungsdienst-Demo "
+    "Verwandt im Portfolio: [markov-queue-demo](https://sebastianhanisch-markov-queue-demo.streamlit.app/) (Zusatzstück: Zustandsdiagramm, Generator und die drei Wege zum Gleichgewicht hinter den Formeln), die Rettungsdienst-Demo "
     "[ems-demo](https://sebastianhanisch-ems-demo.streamlit.app/) rechnet mit einer Markov-Kette über mehrere "
     "Server (Hypercube Queueing Model) und prüft sich an der Erlang-B-Formel; die Hafen-Fall-Demos "
     "[berth-allocation-demo](https://sebastianhanisch-berth-allocation-demo.streamlit.app/) und "
