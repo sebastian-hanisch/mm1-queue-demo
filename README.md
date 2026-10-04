@@ -104,13 +104,23 @@ M/M/1 (diese Demo)                                           [gebaut: mm1-queue-
 ```
 
 Hier nicht enthalten: mehrere Server, begrenzte Schlange, Geduld, nicht-exponentielle Bedienzeiten (nur als
-Gegenbeispiel mit fester Dauer), zeitabhängige Ankunftsraten, Prioritäten, Netze. Verwandt im Portfolio: die Fall-Demos
-`berth-allocation-demo` und `truck-appointment-demo` planen Terminals deterministisch (kein Zufall im Modell); hier
-ist der Zufall das Modell.
+Gegenbeispiel mit fester Dauer), zeitabhängige Ankunftsraten, Prioritäten, Netze.
+
+## Verwandte Demos im Portfolio
+
+- [`ems_demo`](https://github.com/sebastian-hanisch/ems_demo): Fall-Demo zur Standortplanung von Rettungsfahrzeugen
+  mit dem **Hypercube Queueing Model** (Larson 1974), einer Markov-Kette über alle 2ᴺ Verfügbarkeitszustände mehrerer
+  Server. Ihr Korrektheitstest ist die klassische **Erlang-B-Formel**, dieselbe, die diese Linie in einem Folgestück
+  (Verlustsystem) selbst herleitet. Dort ist die Warteschlangenrechnung Werkzeug für die Standortwahl, hier ist sie das Thema.
+- [`berth-allocation-demo`](https://github.com/sebastian-hanisch/berth-allocation-demo) und
+  [`truck-appointment-demo`](https://github.com/sebastian-hanisch/truck-appointment-demo): Fall-Demos der Terminal-Planung,
+  deterministisch (kein Zufall im Modell). Hier ist der Zufall das Modell.
+- [`value-iteration-demo`](https://github.com/sebastian-hanisch/value-iteration-demo): Markov-Entscheidungsprozesse
+  (Zustände mit Übergangswahrscheinlichkeiten und Entscheidungen) aus der Reinforcement-Learning-Linie.
 
 ## Tests
 
-84 Tests, rund 20 s: Formeln gegen Handrechnung und die abgeschnittene Geburts-Sterbe-Kette, Simulation gegen eine von
+85 Tests, rund 20 s: Formeln gegen Handrechnung und die abgeschnittene Geburts-Sterbe-Kette, Simulation gegen eine von
 Hand gerechnete Drei-Lkw-Instanz (Wartezeiten, ∫N dt, Zeit je Zustand, Treppenkurve), Generator gegen die Referenzfolge,
 Ereignissimulation gegen Lindley-Rekursion, Little's Gesetz als Pfadidentität, Auswertungsfunktionen von Hand, Vollständigkeit
 der vorgerechneten Datei, Presets/Permalink, AppTest-Rauchtests (Standard, jedes Preset, Überlast, Randwerte, Permalink-

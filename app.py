@@ -313,6 +313,15 @@ st.markdown(
   aus Wiederholungen im Live-Teil (die stehen nur in den vorgerechneten Messreihen).
     """
 )
+st.caption(
+    "Verwandt im Portfolio: die Rettungsdienst-Demo "
+    "[ems-demo](https://sebastianhanisch-ems-demo.streamlit.app/) rechnet mit einer Markov-Kette über mehrere "
+    "Server (Hypercube Queueing Model) und prüft sich an der Erlang-B-Formel; die Hafen-Fall-Demos "
+    "[berth-allocation-demo](https://sebastianhanisch-berth-allocation-demo.streamlit.app/) und "
+    "[truck-appointment-demo](https://sebastianhanisch-truck-appointment-demo.streamlit.app/) planen "
+    "Terminals dagegen deterministisch, ohne Zufall im Modell; Markov-Ketten mit Entscheidungen behandelt "
+    "[value-iteration-demo](https://sebastianhanisch-value-iteration-demo.streamlit.app/)."
+)
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):

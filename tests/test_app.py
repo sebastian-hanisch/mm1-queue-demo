@@ -145,3 +145,10 @@ def test_footer_is_present():
     at = _run()
     assert any("Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net)" in c.value
                for c in at.caption)
+
+
+def test_related_demos_are_linked():
+    at = _run()
+    text = " ".join(c.value for c in at.caption)
+    for name in ("ems-demo", "berth-allocation-demo", "truck-appointment-demo", "value-iteration-demo"):
+        assert name in text
