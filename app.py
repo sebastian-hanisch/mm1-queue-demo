@@ -303,14 +303,14 @@ st.markdown(
     """
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
-| **Abfertigungsdauer exponentiell** | Die Wartezeit hängt von der Streuung der Dauer ab: bei fester Dauer nur halb so groß (Experiment oben). | **M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1** (Folgestück, geplant) |
-| **Ein Server** | Reale Gates haben mehrere Spuren; „eine gemeinsame Schlange oder je Spur eine“ ist eine eigene Frage, und wo Kunden die Spur selbst wählen, entscheidet die Wahlregel. | **M/M/c (Erlang C)** und **Power-of-d-Choices** (Folgestücke, geplant); mehrere Server mit Markov-Kette: `ems_demo` |
-| **Unbegrenzte Schlange** | Stellplätze sind knapp: wer bei voller Zufahrt ankommt, geht verloren. Die Verlustwahrscheinlichkeit ist oft winzig und damit nur mit Tricks simulierbar. | **M/M/c/c (Erlang B)** und **seltene Ereignisse (Splitting)** (Folgestücke, geplant) |
-| **Unendliche Geduld** | Niemand dreht um. Mit Abwanderung bleibt auch bei Überlast ein Gleichgewicht. | **Erlang A** (Folgestück, geplant) |
-| **Konstante Ankunftsrate** | Echte Gates haben Morgenspitzen; die Gleichgewichtsformeln mit dem Tagesmittel unterschätzen die Spitze. | **Wurzel-Personalregel (Halfin-Whitt)**, **zeitvariable Ankünfte** (Folgestücke, geplant) |
-| **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **Prioritätsklassen** (Folgestück, geplant) |
-| **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **Jackson-Netze** (Folgestück, geplant) |
-| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **Simulationsanalyse (Warm-up, Konfidenzintervalle)** (Folgestück, geplant) |
+| **Abfertigungsdauer exponentiell** | Die Wartezeit hängt von der Streuung der Dauer ab: bei fester Dauer nur halb so groß (Experiment oben). | **M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1** (Folgestück) |
+| **Ein Server** | Reale Gates haben mehrere Spuren; „eine gemeinsame Schlange oder je Spur eine“ ist eine eigene Frage, und wo Kunden die Spur selbst wählen, entscheidet die Wahlregel. | **M/M/c (Erlang C)** und **Power-of-d-Choices** (Folgestücke); mehrere Server mit Markov-Kette: `ems_demo` |
+| **Unbegrenzte Schlange** | Stellplätze sind knapp: wer bei voller Zufahrt ankommt, geht verloren. Die Verlustwahrscheinlichkeit ist oft winzig und damit nur mit Tricks simulierbar. | **M/M/c/c (Erlang B)** und **seltene Ereignisse (Splitting)** (Folgestücke) |
+| **Unendliche Geduld** | Niemand dreht um. Mit Abwanderung bleibt auch bei Überlast ein Gleichgewicht. | **Erlang A** (Folgestück) |
+| **Konstante Ankunftsrate** | Echte Gates haben Morgenspitzen; die Gleichgewichtsformeln mit dem Tagesmittel unterschätzen die Spitze. | **Wurzel-Personalregel (Halfin-Whitt)**, **zeitvariable Ankünfte** (Folgestücke) |
+| **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **Prioritätsklassen** (Folgestück) |
+| **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **Jackson-Netze** (Folgestück) |
+| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **Simulationsanalyse (Warm-up, Konfidenzintervalle)** (Folgestück) |
 """
 )
 st.caption(

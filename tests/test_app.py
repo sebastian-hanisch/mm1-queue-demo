@@ -155,13 +155,13 @@ def test_related_demos_are_linked():
 
 
 def test_every_limit_names_a_follow_up_piece():
-    """Die Grenzen-Tabelle nennt zu jeder aufgehobenen Annahme das geplante Folgestück."""
+    """Die Grenzen-Tabelle nennt zu jeder aufgehobenen Annahme das Folgestück."""
     at = _run()
     table = next(m.value for m in at.markdown if "Wer setzt an" in m.value)
     for name in ("Pollaczek-Khinchine", "Erlang C", "Power-of-d", "Erlang B", "Splitting", "Erlang A", "Halfin-Whitt",
                  "zeitvariable Ankünfte", "Prioritätsklassen", "Jackson-Netze", "Simulationsanalyse"):
         assert name in table, name
-    assert table.count("geplant") >= 8
+    assert "geplant" not in table      # die Linie wird erst vollständig veröffentlicht, kein Status-Zusatz
 
 
 def test_seed_control_uses_the_portfolio_wording():

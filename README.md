@@ -85,7 +85,7 @@ Alle Zahlen stehen in `tests/test_claims.py`; Zeiten bei 3 min mittlerer Abferti
 
 ## Bewusst nicht umgesetzt
 
-Jede dieser Annahmen hebt ein Folgestück der Linie auf (Stand: alle geplant, nur diese Demo gebaut):
+Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 
 | Annahme | Folgestück |
 |---|---|
