@@ -303,7 +303,7 @@ st.markdown(
     """
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
-| **Abfertigungsdauer exponentiell** | Die Wartezeit hängt von der Streuung der Dauer ab: bei fester Dauer nur halb so groß (Experiment oben). | **M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1** (Folgestück) |
+| **Abfertigungsdauer exponentiell** | Die Wartezeit hängt von der Streuung der Dauer ab: bei fester Dauer nur halb so groß (Experiment oben). | **[M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1](https://sebastianhanisch-mg1-kingman-demo.streamlit.app/)** |
 | **Ein Server** | Reale Gates haben mehrere Spuren; „eine gemeinsame Schlange oder je Spur eine“ ist eine eigene Frage, und wo Kunden die Spur selbst wählen, entscheidet die Wahlregel. | **[M/M/c (Erlang C)](https://sebastianhanisch-mmc-queue-demo.streamlit.app/)** und **[Power-of-d-Choices](https://sebastianhanisch-power-of-d-demo.streamlit.app/)**; mehrere Server mit Markov-Kette: `ems_demo` |
 | **Unbegrenzte Schlange** | Stellplätze sind knapp: wer bei voller Zufahrt ankommt, geht verloren. Die Verlustwahrscheinlichkeit ist oft winzig und damit nur mit Tricks simulierbar. | **[M/M/c/c (Erlang B)](https://sebastianhanisch-erlang-b-demo.streamlit.app/)** und **[seltene Ereignisse (Splitting)](https://sebastianhanisch-splitting-demo.streamlit.app/)** |
 | **Unendliche Geduld** | Niemand dreht um. Mit Abwanderung bleibt auch bei Überlast ein Gleichgewicht. | **[Erlang A](https://sebastianhanisch-erlang-a-demo.streamlit.app/)** |

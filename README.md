@@ -91,7 +91,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 
 | Annahme | Folgestück |
 |---|---|
-| Abfertigungsdauer exponentiell | M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1 |
+| Abfertigungsdauer exponentiell | [M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1](https://github.com/sebastian-hanisch/mg1-kingman-demo) |
 | Ein Server | [M/M/c (Erlang C)](https://github.com/sebastian-hanisch/mmc-queue-demo), [Power-of-d-Choices](https://github.com/sebastian-hanisch/power-of-d-demo); mehrere Server mit Markov-Kette bereits in `ems_demo` |
 | Unbegrenzte Schlange | [M/M/c/c (Erlang B)](https://github.com/sebastian-hanisch/erlang-b-demo), [seltene Ereignisse (Splitting)](https://github.com/sebastian-hanisch/splitting-demo) |
 | Unendliche Geduld | [Erlang A](https://github.com/sebastian-hanisch/erlang-a-demo) |
