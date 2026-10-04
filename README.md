@@ -93,7 +93,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 |---|---|
 | Abfertigungsdauer exponentiell | M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1 |
 | Ein Server | [M/M/c (Erlang C)](https://github.com/sebastian-hanisch/mmc-queue-demo), [Power-of-d-Choices](https://github.com/sebastian-hanisch/power-of-d-demo); mehrere Server mit Markov-Kette bereits in `ems_demo` |
-| Unbegrenzte Schlange | M/M/c/c (Erlang B), seltene Ereignisse (Splitting) |
+| Unbegrenzte Schlange | [M/M/c/c (Erlang B)](https://github.com/sebastian-hanisch/erlang-b-demo), seltene Ereignisse (Splitting) |
 | Unendliche Geduld | [Erlang A](https://github.com/sebastian-hanisch/erlang-a-demo) |
 | Konstante Ankunftsrate | [Wurzel-Personalregel (Halfin-Whitt)](https://github.com/sebastian-hanisch/square-root-staffing-demo), [zeitvariable Ankünfte](https://github.com/sebastian-hanisch/time-varying-arrivals-demo) |
 | Alle Lkw gleich wichtig | Prioritätsklassen |
