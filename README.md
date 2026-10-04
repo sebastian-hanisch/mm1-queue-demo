@@ -97,7 +97,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 | Unendliche Geduld | [Erlang A](https://github.com/sebastian-hanisch/erlang-a-demo) |
 | Konstante Ankunftsrate | [Wurzel-Personalregel (Halfin-Whitt)](https://github.com/sebastian-hanisch/square-root-staffing-demo), [zeitvariable Ankünfte](https://github.com/sebastian-hanisch/time-varying-arrivals-demo) |
 | Alle Lkw gleich wichtig | [Prioritätsklassen](https://github.com/sebastian-hanisch/priority-queue-demo) |
-| Ein einziger Halt | Jackson-Netze |
+| Ein einziger Halt | [Jackson-Netze](https://github.com/sebastian-hanisch/jackson-network-demo) |
 | Ein fester Simulationslauf ohne Intervalle | [Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://github.com/sebastian-hanisch/output-analysis-demo) |
 
 Der Baum zeigt dieselben Folgestücke in ihrer Abhängigkeit:

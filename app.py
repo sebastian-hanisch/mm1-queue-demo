@@ -309,7 +309,7 @@ st.markdown(
 | **Unendliche Geduld** | Niemand dreht um. Mit Abwanderung bleibt auch bei Überlast ein Gleichgewicht. | **[Erlang A](https://sebastianhanisch-erlang-a-demo.streamlit.app/)** |
 | **Konstante Ankunftsrate** | Echte Gates haben Morgenspitzen; die Gleichgewichtsformeln mit dem Tagesmittel unterschätzen die Spitze. | **[Wurzel-Personalregel (Halfin-Whitt)](https://sebastianhanisch-square-root-staffing-demo.streamlit.app/)**, **[zeitvariable Ankünfte](https://sebastianhanisch-time-varying-arrivals-demo.streamlit.app/)** |
 | **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **[Prioritätsklassen](https://sebastianhanisch-priority-queue-demo.streamlit.app/)** |
-| **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **Jackson-Netze** (Folgestück) |
+| **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **[Jackson-Netze](https://sebastianhanisch-jackson-network-demo.streamlit.app/)** |
 | **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **[Simulationsanalyse (Warm-up, Konfidenzintervalle)](https://sebastianhanisch-output-analysis-demo.streamlit.app/)** |
 """
 )
