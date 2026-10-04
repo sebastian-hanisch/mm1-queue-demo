@@ -22,7 +22,7 @@ hängt selbst an ρ.
 - Gleichgewicht nur bei ρ < 100 %: P(n im System) = (1−ρ)ρⁿ, L = ρ/(1−ρ), Wq = ρ/(μ−λ), P(Wq > t) = ρ·e^(−(μ−λ)t).
 - Little's Gesetz L = λ·W gilt allgemein; auf einem simulierten Pfad, der leer endet, sogar als exakte Identität.
 - Regler: Auslastung (10–110 %), mittlere Abfertigungsdauer (1–6 min, verschiebt nur die Zeitachse), Lauflänge
-  (1 000–50 000 Lkw), Saatwert. Voreinstellung: 90 %, 3 min (18 Lkw/h kommen an, 20 Lkw/h werden abgefertigt), 10 000 Lkw.
+  (1 000–50 000 Lkw), Zufalls-Seed. Voreinstellung: 90 %, 3 min (18 Lkw/h kommen an, 20 Lkw/h werden abgefertigt), 10 000 Lkw.
 - Ab ρ ≥ 100 % gibt es kein Gleichgewicht; die App zeigt das offen (keine Formelwerte, Warnung) und lässt die
   Simulation weiterlaufen, damit man die wachsende Schlange sieht.
 
@@ -85,7 +85,20 @@ Alle Zahlen stehen in `tests/test_claims.py`; Zeiten bei 3 min mittlerer Abferti
 
 ## Bewusst nicht umgesetzt
 
-Jede der folgenden Annahmen hebt ein Folgestück der Linie auf:
+Jede dieser Annahmen hebt ein Folgestück der Linie auf (Stand: alle geplant, nur diese Demo gebaut):
+
+| Annahme | Folgestück |
+|---|---|
+| Abfertigungsdauer exponentiell | M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1 |
+| Ein Server | M/M/c (Erlang C), Power-of-d-Choices; mehrere Server mit Markov-Kette bereits in `ems_demo` |
+| Unbegrenzte Schlange | M/M/c/c (Erlang B), seltene Ereignisse (Splitting) |
+| Unendliche Geduld | Erlang A |
+| Konstante Ankunftsrate | Wurzel-Personalregel (Halfin-Whitt), zeitvariable Ankünfte |
+| Alle Lkw gleich wichtig | Prioritätsklassen |
+| Ein einziger Halt | Jackson-Netze |
+| Ein fester Simulationslauf ohne Intervalle | Simulationsanalyse (Warm-up, Konfidenzintervalle) |
+
+Der Baum zeigt dieselben Folgestücke in ihrer Abhängigkeit:
 
 ```
 M/M/1 (diese Demo)                                           [gebaut: mm1-queue-demo]
@@ -120,7 +133,7 @@ Gegenbeispiel mit fester Dauer), zeitabhängige Ankunftsraten, Prioritäten, Net
 
 ## Tests
 
-85 Tests, rund 20 s: Formeln gegen Handrechnung und die abgeschnittene Geburts-Sterbe-Kette, Simulation gegen eine von
+87 Tests, rund 20 s: Formeln gegen Handrechnung und die abgeschnittene Geburts-Sterbe-Kette, Simulation gegen eine von
 Hand gerechnete Drei-Lkw-Instanz (Wartezeiten, ∫N dt, Zeit je Zustand, Treppenkurve), Generator gegen die Referenzfolge,
 Ereignissimulation gegen Lindley-Rekursion, Little's Gesetz als Pfadidentität, Auswertungsfunktionen von Hand, Vollständigkeit
 der vorgerechneten Datei, Presets/Permalink, AppTest-Rauchtests (Standard, jedes Preset, Überlast, Randwerte, Permalink-

@@ -102,7 +102,7 @@ with st.sidebar:
     n_customers = st.select_slider("Simulierte Lkw je Lauf", options=C.N_CUSTOMER_OPTIONS, key="n_customers_select",
                                    help="Länge des Simulationslaufs. Längere Läufe streuen weniger, brauchen "
                                         "aber mehr Rechenzeit.")
-    seed = st.number_input("Saatwert", min_value=bounds("seed_input")[0], max_value=bounds("seed_input")[1],
+    seed = st.number_input("Zufalls-Seed", min_value=bounds("seed_input")[0], max_value=bounds("seed_input")[1],
                            step=1, key="seed_input", help="Bestimmt alle Zufallszahlen des Laufs.")
     st.button("🎲 Neuen Lauf würfeln", on_click=randomize_seed)
 
@@ -301,17 +301,17 @@ st.markdown("---")
 st.subheader("🚧 Wo die Annahmen enden")
 st.markdown(
     """
-- **Abfertigungsdauer exponentiell:** reale Abfertigungen streuen weniger (oder mehr). Die Wartezeit hängt von der
-  Varianz der Dauer ab, wie das Gegenbeispiel oben zeigt.
-- **Ein Server:** reale Gates haben mehrere Spuren; die Frage „eine gemeinsame Schlange oder eine je Spur“ gibt es hier
-  nicht.
-- **Unbegrenzte Schlange, unendliche Geduld:** niemand dreht um, nichts läuft über, kein Stellplatz ist knapp.
-- **Konstante Ankunftsrate:** die Formeln gelten im Gleichgewicht; echte Gates haben Morgenspitzen.
-- **Poisson-Ankünfte:** keine Konvois, keine Termine.
-- **Gleiche Priorität, ein einziger Halt:** keine Vorfahrt für eilige Lkw, kein Weg durch mehrere Stationen.
-- **Simulation startet leer und rechnet mit einem festen Lauf:** kein Einschwingen-Abschneiden, keine Konfidenzintervalle
-  aus Wiederholungen im Live-Teil (die stehen nur in den vorgerechneten Messreihen).
-    """
+| Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
+|---|---|---|
+| **Abfertigungsdauer exponentiell** | Die Wartezeit hängt von der Streuung der Dauer ab: bei fester Dauer nur halb so groß (Experiment oben). | **M/G/1 (Pollaczek-Khinchine), Kingman-Näherung G/G/1** (Folgestück, geplant) |
+| **Ein Server** | Reale Gates haben mehrere Spuren; „eine gemeinsame Schlange oder je Spur eine“ ist eine eigene Frage, und wo Kunden die Spur selbst wählen, entscheidet die Wahlregel. | **M/M/c (Erlang C)** und **Power-of-d-Choices** (Folgestücke, geplant); mehrere Server mit Markov-Kette: `ems_demo` |
+| **Unbegrenzte Schlange** | Stellplätze sind knapp: wer bei voller Zufahrt ankommt, geht verloren. Die Verlustwahrscheinlichkeit ist oft winzig und damit nur mit Tricks simulierbar. | **M/M/c/c (Erlang B)** und **seltene Ereignisse (Splitting)** (Folgestücke, geplant) |
+| **Unendliche Geduld** | Niemand dreht um. Mit Abwanderung bleibt auch bei Überlast ein Gleichgewicht. | **Erlang A** (Folgestück, geplant) |
+| **Konstante Ankunftsrate** | Echte Gates haben Morgenspitzen; die Gleichgewichtsformeln mit dem Tagesmittel unterschätzen die Spitze. | **Wurzel-Personalregel (Halfin-Whitt)**, **zeitvariable Ankünfte** (Folgestücke, geplant) |
+| **Alle Lkw gleich wichtig** | Eilige Lkw brauchen Vorfahrt; das verschiebt die Wartezeit zwischen den Klassen. | **Prioritätsklassen** (Folgestück, geplant) |
+| **Ein einziger Halt** | Kein Weg durch mehrere Stationen (Gate, Kran, Stapel), bei denen Engpässe wandern. | **Jackson-Netze** (Folgestück, geplant) |
+| **Ein fester Simulationslauf ohne Intervalle** | Ein Lauf ist eine Stichprobe: die Live-Ansicht zeigt keine Konfidenzintervalle, kein Abschneiden des Einschwingens. | **Simulationsanalyse (Warm-up, Konfidenzintervalle)** (Folgestück, geplant) |
+"""
 )
 st.caption(
     "Verwandt im Portfolio: die Rettungsdienst-Demo "

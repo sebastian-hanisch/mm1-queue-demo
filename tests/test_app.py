@@ -152,3 +152,18 @@ def test_related_demos_are_linked():
     text = " ".join(c.value for c in at.caption)
     for name in ("ems-demo", "berth-allocation-demo", "truck-appointment-demo", "value-iteration-demo"):
         assert name in text
+
+
+def test_every_limit_names_a_follow_up_piece():
+    """Die Grenzen-Tabelle nennt zu jeder aufgehobenen Annahme das geplante Folgestück."""
+    at = _run()
+    table = next(m.value for m in at.markdown if "Wer setzt an" in m.value)
+    for name in ("Pollaczek-Khinchine", "Erlang C", "Power-of-d", "Erlang B", "Splitting", "Erlang A", "Halfin-Whitt",
+                 "zeitvariable Ankünfte", "Prioritätsklassen", "Jackson-Netze", "Simulationsanalyse"):
+        assert name in table, name
+    assert table.count("geplant") >= 8
+
+
+def test_seed_control_uses_the_portfolio_wording():
+    at = _run()
+    assert [n.label for n in at.number_input] == ["Zufalls-Seed"]
