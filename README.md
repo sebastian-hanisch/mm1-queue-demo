@@ -123,7 +123,7 @@ Gegenbeispiel mit fester Dauer), zeitabhängige Ankunftsraten, Prioritäten, Net
 
 ## Verwandte Demos im Portfolio
 
-- [`ems_demo`](https://github.com/sebastian-hanisch/ems_demo): Fall-Demo zur Standortplanung von Rettungsfahrzeugen
+- [`ems_demo`](https://github.com/sebastian-hanisch/ems-demo): Fall-Demo zur Standortplanung von Rettungsfahrzeugen
   mit dem **Hypercube Queueing Model** (Larson 1974), einer Markov-Kette über alle 2ᴺ Verfügbarkeitszustände mehrerer
   Server. Ihr Korrektheitstest ist die klassische **Erlang-B-Formel**, dieselbe, die diese Linie in einem Folgestück
   (Verlustsystem) selbst herleitet. Dort ist die Warteschlangenrechnung Werkzeug für die Standortwahl, hier ist sie das Thema.
