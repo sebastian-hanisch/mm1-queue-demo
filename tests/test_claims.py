@@ -3,6 +3,7 @@
 verrauschten Wert gepinnt."""
 
 import statistics
+from pathlib import Path
 
 import pytest
 
@@ -74,14 +75,51 @@ def test_start_bias_quoted_in_readme():
     assert all(abs(GRID[(50, n)]["bias_pct"]) < 5 for n in C.N_CUSTOMER_OPTIONS)
 
 
+def _exact_runs_for_1pct(rho_pct, service_min=3):
+    """Exakte Lauflänge für ±1 % (95 %) aus der asymptotischen Varianz des Mittels der Wartezeit in der M/M/1-Schlange:
+    σ² = ρ (2 + 5ρ − 4ρ² + ρ³) / (μ² (1 − ρ)⁴) (Whitt); n = (1.96 / 0.01)² σ² / E[Wq]². Unabhängig von der Simulation."""
+    rho = rho_pct / 100
+    mu = 1 / service_min
+    sigma2 = rho * (2 + 5 * rho - 4 * rho ** 2 + rho ** 3) / (mu ** 2 * (1 - rho) ** 4)
+    return (1.96 / 0.01) ** 2 * sigma2 / _formula(rho_pct, service_min)["Wq"] ** 2
+
+
+def test_exact_asymptotic_variance_gives_the_known_run_lengths():
+    """Handwerte der Formel (ρ = 50 %: σ² = 261 min², E[Wq] = 3 min)."""
+    assert _exact_runs_for_1pct(50) == pytest.approx(1.114e6, rel=0.002)
+    assert _exact_runs_for_1pct(90) == pytest.approx(17.03e6, rel=0.002)
+
+
 def test_required_run_length_quoted_in_readme():
-    """Lkw je Lauf für ±1 % (95 %): rund 0.6 Mio. / 6 Mio. / 20 Mio. / 70 Mio. / 1.1 Mrd. (Messunsicherheit rund ±20 %)."""
-    assert REQ[50]["n_for_1pct"] == pytest.approx(0.65e6, rel=0.35)
-    assert REQ[80]["n_for_1pct"] == pytest.approx(5.6e6, rel=0.35)
-    assert REQ[90]["n_for_1pct"] == pytest.approx(20e6, rel=0.35)
-    assert REQ[95]["n_for_1pct"] == pytest.approx(68e6, rel=0.35)
-    assert REQ[99]["n_for_1pct"] == pytest.approx(1.1e9, rel=0.4)
-    assert 1000 < REQ[99]["n_for_1pct"] / REQ[50]["n_for_1pct"] < 3500
+    """Lkw je Lauf für ±1 % (95 %): rund 1.0 Mio. / 6 Mio. / 19 Mio. / 67 Mio. / 1.5 Mrd. (300 Läufe à 1 Mio. Lkw, Messunsicherheit ±8 %, 1σ)."""
+    assert PRE["required_reps"] == 300 and PRE["required_n"] == 1_000_000
+    assert REQ[50]["n_for_1pct"] == pytest.approx(1.04e6, rel=0.01)
+    assert REQ[80]["n_for_1pct"] == pytest.approx(6.0e6, rel=0.01)
+    assert REQ[90]["n_for_1pct"] == pytest.approx(19e6, rel=0.01)
+    assert REQ[95]["n_for_1pct"] == pytest.approx(67e6, rel=0.01)
+    assert REQ[99]["n_for_1pct"] == pytest.approx(1.46e9, rel=0.01)
+    assert 1300 < REQ[99]["n_for_1pct"] / REQ[50]["n_for_1pct"] < 1500   # "etwa das 1 400-Fache"
+
+
+def test_required_run_length_matches_the_exact_asymptotic_variance():
+    """Bindung an die exakte Rechnung: das Band (±30 %, ρ = 99 %: ±35 %) deckt gut dreieinhalb Standardfehler der 300-Läufe-Messung plus die
+    Startverzerrung ab. Die frühere 60-Läufe-Zahl (0.65 Mio. bei ρ = 50 %, 42 % unter 1.11 Mio.) läge außerhalb."""
+    for rho_pct, band in ((50, 0.30), (80, 0.30), (90, 0.30), (95, 0.30), (99, 0.35)):
+        assert REQ[rho_pct]["n_for_1pct"] == pytest.approx(_exact_runs_for_1pct(rho_pct), rel=band), rho_pct
+    assert REQ[50]["n_for_1pct"] > 0.65e6 * 1.3
+
+
+def test_readme_quotes_the_stored_run_lengths():
+    """Die Zahlen der README-Zeile „Wie lang muss ein Lauf sein“ sind die gerundeten Werte der vorgerechneten Datei."""
+    row = next(line for line in (Path(__file__).resolve().parent.parent / "README.md").read_text(encoding="utf-8").splitlines()
+               if line.startswith("| Wie lang muss ein Lauf sein"))
+    def mio(rho):
+        return REQ[rho]["n_for_1pct"] / 1e6
+    factor = f"{round(REQ[99]['n_for_1pct'] / REQ[50]['n_for_1pct'], -2):,.0f}".replace(",", " ")
+    expected = [f"Rund **{mio(50):.1f} Mio.** Lkw bei ρ = 50 %", f"{mio(80):.0f} Mio. bei 80 %", f"**{mio(90):.0f} Mio.** bei 90 %",
+                f"{mio(95):.0f} Mio. bei 95 %", f"**{mio(99) / 1e3:.1f} Mrd.** bei 99 %", f"das {factor}-Fache"]
+    for text in expected:
+        assert text in row, text
 
 
 def test_sweep_points_follow_the_formula_curve():

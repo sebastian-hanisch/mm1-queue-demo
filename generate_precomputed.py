@@ -2,7 +2,7 @@
 `precomputed_sweep.json`. Dauer: einige Minuten, parallel auf mehreren Prozessen.
 
   grid      Auslastung × Lauflänge: Startverzerrung und Streuung eines Laufs (je 200 Läufe)
-  required  Lkw je Lauf für ±1 % Genauigkeit (95 %) bei ausgewählten Auslastungen (Lauflänge 1 Mio., 60 Läufe)
+  required  Lkw je Lauf für ±1 % Genauigkeit (95 %) bei ausgewählten Auslastungen (Lauflänge 1 Mio., 300 Läufe)
 """
 
 import json
@@ -17,7 +17,7 @@ from mm1_evaluation import PRECOMPUTED_PATH, estimator_study
 
 GRID_REPS = 200
 REQUIRED_RHO_PCT = (50, 80, 90, 95, 99)
-REQUIRED_N, REQUIRED_REPS = 1_000_000, 60
+REQUIRED_N, REQUIRED_REPS = 1_000_000, 300   # 60 Läufe lagen bei ρ = 50 % 2.3 Standardfehler unter dem exakten Wert
 
 
 def _grid_task(args):

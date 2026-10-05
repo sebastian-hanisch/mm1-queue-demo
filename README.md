@@ -57,7 +57,7 @@ Alle Zahlen stehen in `tests/test_claims.py`; Zeiten bei 3 min mittlerer Abferti
 | Wie weit liegt ein Einzellauf von der Formel? | Standardfall (Seed 35, 10 000 Lkw): **7.73 statt 9.00** Lkw (−14 %), Wartezeit 23.0 statt 27.0 min (−15 %). Das ist typisch, kein Ausreißer (nächste Zeile). |
 | Wie stark streut ein Lauf? | Relative Standardabweichung der Wartezeit bei 10 000 Lkw: ρ = 50 % **±5 %**, ρ = 90 % **±18 %**, ρ = 97 % **±51 %**. Mit 50 000 Lkw: ρ = 90 % ±10 %, ρ = 97 % ±30 %. |
 | Unterschätzt der leere Start die Schlange? | Bei ρ = 97 % ja: im Mittel **−47 %** bei 1 000 Lkw, −11 % bei 10 000, bei 50 000 nicht mehr vom Rauschen zu trennen. Bei ρ = 50 % liegt sie in jeder Lauflänge unter 5 %. |
-| Wie lang muss ein Lauf sein (±1 %, 95 %)? | Rund **0.6 Mio.** Lkw bei ρ = 50 %, 6 Mio. bei 80 %, **20 Mio.** bei 90 %, 70 Mio. bei 95 %, **1.1 Mrd.** bei 99 % (Messunsicherheit rund ±20 %). Zwischen 50 % und 99 % liegt etwa das 1 700-Fache. |
+| Wie lang muss ein Lauf sein (±1 %, 95 %)? | Rund **1.0 Mio.** Lkw bei ρ = 50 %, 6 Mio. bei 80 %, **19 Mio.** bei 90 %, 67 Mio. bei 95 %, **1.5 Mrd.** bei 99 % (300 Läufe à 1 Mio. Lkw, Messunsicherheit rund ±8 %, 1σ; die exakte asymptotische Varianz gibt 1.1 Mio., 4.7 Mio., 17 Mio., 65 Mio., 1.55 Mrd.). Zwischen 50 % und 99 % liegt etwa das 1 400-Fache. |
 | Folgen die simulierten Mittel der Formelkurve? | Ja: 200 Läufe à 50 000 Lkw je Auslastung liegen innerhalb von vier Standardfehlern (plus 2 % Startverzerrung) an der Formel; die Fehlerbalken wachsen nahe 100 % stark. |
 | Feste statt exponentielle Abfertigung? | Wartezeit **genau halb so groß** (Formel); simuliert bei ρ = 50 %: 1.50 gegen 3.01 min (fünf Seeds à 100 000 Lkw). Little's Gesetz gilt in beiden Fällen. |
 
@@ -75,8 +75,12 @@ Alle Zahlen stehen in `tests/test_claims.py`; Zeiten bei 3 min mittlerer Abferti
 ## Ehrliche Grenzen
 
 - Die Lauflängen für ±1 % beruhen auf der Annahme, dass die Varianz des Schätzers mit 1/N fällt, gemessen bei
-  1 Mio. Lkw und 60 Läufen (Unsicherheit der Zahl rund ±20 %, 1σ). Bei ρ = 99 % ist selbst diese Lauflänge noch mit −3.7 %
-  Startverzerrung behaftet; die 1.1 Mrd. sind dort eine grobe Abschätzung.
+  1 Mio. Lkw und 300 Läufen (Zufalls-Seeds `ρ_pct · 10 000 000 + 9 000 000 + Lauf`, Lauf 0 bis 299; Zielgenauigkeit: Halbbreite des
+  95-%-Intervalls = 1 % von E[Wq], also n = N · (1.96 · s / (0.01 · E[Wq]))² mit der Standardabweichung s der Lauf-Mittel; Unsicherheit
+  der Zahl rund ±8 %, 1σ). Eine frühere Fassung mit nur 60 Läufen nannte bei ρ = 50 % 0.6 Mio.: das war ein Ausreißer der kleinen
+  Stichprobe (2.3 Standardfehler unter dem exakten Wert 1.1 Mio. aus der asymptotischen Varianz
+  σ² = ρ (2 + 5ρ − 4ρ² + ρ³) / (μ² (1 − ρ)⁴), `tests/test_claims.py` bindet die Zahlen daran). Bei ρ = 99 % ist selbst diese
+  Lauflänge noch mit −1.1 % Startverzerrung behaftet; die 1.5 Mrd. sind dort eine grobe Abschätzung.
 - Die Startverzerrungen in der Tabelle sind Mittel über 200 Läufe und selbst verrauscht (bei ±50 % Streuung eines
   Laufs auf wenige Prozentpunkte genau).
 - Die Messreihen gelten für beliebige mittlere Abfertigungsdauern, weil eine Skalierung der Zeitachse alle Verhältnisse
@@ -136,7 +140,7 @@ Gegenbeispiel mit fester Dauer), zeitabhängige Ankunftsraten, Prioritäten, Net
 
 ## Tests
 
-87 Tests, rund 20 s: Formeln gegen Handrechnung und die abgeschnittene Geburts-Sterbe-Kette, Simulation gegen eine von
+94 Tests, rund 50 s (davon `test_oracle_queue.py`: Wartezeit-Verteilung als Erlang-Mischung und die Simulation gegen eine Kunde-für-Kunde-Rechnung): Formeln gegen Handrechnung und die abgeschnittene Geburts-Sterbe-Kette, Simulation gegen eine von
 Hand gerechnete Drei-Lkw-Instanz (Wartezeiten, ∫N dt, Zeit je Zustand, Treppenkurve), Generator gegen die Referenzfolge,
 Ereignissimulation gegen Lindley-Rekursion, Little's Gesetz als Pfadidentität, Auswertungsfunktionen von Hand, Vollständigkeit
 der vorgerechneten Datei, Presets/Permalink, AppTest-Rauchtests (Standard, jedes Preset, Überlast, Randwerte, Permalink-
